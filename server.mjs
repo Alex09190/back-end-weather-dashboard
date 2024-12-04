@@ -14,11 +14,11 @@ app.use(
   })
 );
 
-//api call for locations from city searches
+//api call for locations from city searches, limited to 5 due to OpenWeather's api limitations
 app.get("/api/locationData", async (req, res) => {
   const keyWord = req.query.q;
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${keyWord}&appid=${apiKey}`
+    `http://api.openweathermap.org/geo/1.0/direct?q=${keyWord}&limit=5&appid=${apiKey}`
   );
   const data = await response.json();
   res.json(data);
