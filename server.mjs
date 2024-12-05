@@ -15,7 +15,7 @@ app.use(
 );
 
 //api call for locations from city searches, limited to 5 due to OpenWeather's api limitations
-app.get("/api/locationData", async (req, res) => {
+app.get("/api/location", async (req, res) => {
   const keyWord = req.query.q;
   const response = await fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${keyWord}&limit=5&appid=${apiKey}`
@@ -25,11 +25,13 @@ app.get("/api/locationData", async (req, res) => {
 });
 
 //api call for weather based on location
-app.get("/api/weatherData", async (req, res) => {
+app.get("/api/weather", async (req, res) => {
   const lat = req.query.lat;
   const lon = req.query.lon;
+  const temp = req.query.units;
+
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${keyWord}&appid=${apiKey}``https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
+    `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${temp}&appid=${apiKey}`
   );
   const data = await response.json();
   res.json(data);
