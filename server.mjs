@@ -13,7 +13,7 @@ app.use(
     origin: [
       "http://localhost:3001",
       "https://weather-dashboard-back.onrender.com",
-      "https://weather-dashboard-front.onrender.com/",
+      "https://weather-dashboard-front.onrender.com",
     ],
   })
 );
