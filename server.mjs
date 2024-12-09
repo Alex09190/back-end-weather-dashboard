@@ -10,7 +10,10 @@ const apiKey = process.env.WEATHER_API_KEY; //environment variable for API key
 app.use(
   cors({
     //bypasses security restrictions and allows connection flow from origin
-    origin: ["http://localhost:3001"],
+    origin: [
+      "http://localhost:3001",
+      "https://weather-dashboard-back.onrender.com",
+    ],
   })
 );
 
